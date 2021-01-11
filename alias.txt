@@ -1,0 +1,1 @@
+alias rae='/Users/agustinbouillet/work/venv/drae/bin/python /Users/agustinbouillet/work/drae/drae.py -t '
