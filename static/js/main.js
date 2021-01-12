@@ -18,7 +18,6 @@ function send(term){
   }).then(function(data) {
     var print = document.querySelector('#resultado');
     print.innerHTML = data.data;
-    // ejecute this
 
   }).catch(function(ex) {
 
@@ -37,9 +36,6 @@ termino.forEach(function(element){
       var term = document.querySelector('#term');
       console.log(term.value, term);
       send(term.value);
-
-
-
     });
 });
 

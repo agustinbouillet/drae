@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 import json
+import os
 import sqlite3
 from argparse import ArgumentParser
 
@@ -7,10 +8,13 @@ import lxml
 import requests as r
 from bs4 import BeautifulSoup
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_FILENAME = 'rae.db'
+
 
 def select(term=None):
   try:
-    with sqlite3.connect("rae.db") as connection:
+    with sqlite3.connect(os.path.join(BASE_DIR, DB_FILENAME)) as connection:
       connection.text_factory = str
       cursor = connection.cursor()
       row = cursor.execute(
@@ -23,7 +27,7 @@ def select(term=None):
 
 
 def insert(term=None, definition=None, definition_plain=None):
-  with sqlite3.connect("rae.db") as connection:
+  with sqlite3.connect(os.path.join(BASE_DIR, DB_FILENAME)) as connection:
     connection.text_factory = str
     cursor = connection.cursor()
 
