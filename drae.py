@@ -4,8 +4,8 @@ import os
 import sqlite3
 from argparse import ArgumentParser
 
+import cloudscraper
 import lxml
-import requests as r
 from bs4 import BeautifulSoup
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -66,10 +66,12 @@ def search(term, format='text'):
         return row[2]
 
     else:
-      url         = f'https://dle.rae.es/{term}'
-      search_term = r.get(url)
-      soup        = BeautifulSoup(search_term.text, features="lxml")
-      get_result  = soup.find(id='resultados').find('article')
+      url = f'https://dle.rae.es/{term}'
+      scraper = cloudscraper.create_scraper()
+      data = scraper.get(url).text
+      soup = BeautifulSoup(data, features="lxml")
+      get_result = soup.find(id='resultados').find('article')
+
 
       if get_result:
         print('¡Nuevo término!\n')
