@@ -1,0 +1,19 @@
+{
+  "name": "drae",
+  "version": "1.0.0",
+  "description": "Buscador de términos en la RAE (Real Academia Española)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/agustinbouillet/drae.git",
+  "author": "agustin.bouillet <agustin.bouillet@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/agustinbouillet/drae/issues"
+  },
+  "homepage": "https://github.com/agustinbouillet/drae#readme",
+  "dependencies": {
+    "slug": "^5.2.0"
+  }
+}

@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 import json
+import utils
 
 from drae import search
 from flask import Flask, Markup, jsonify, render_template, url_for
@@ -19,4 +20,4 @@ def index(name=None):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host=utils.network_ip(), port=5000)

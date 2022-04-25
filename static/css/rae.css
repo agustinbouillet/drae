@@ -3,17 +3,28 @@ html {
   font-family: 'Open Sans', sans-serif;
 }
 
+:root {
+  --cyan:  #0dcaf0;
+}
+
 body {
   background: #f9f9f9;
   color: #5a5a5a;
 }
 
+
+
 mark {
   background-color: inherit;
   color: inherit;
-  cursor: pointer;
-  padding: 0
+  cursor: pointer !important;
+  padding: 0;
+  transition: border .15s;
+  border-bottom: 3px solid transparent;
 }
+mark:hover { border-bottom: 3px solid var(--cyan);  transition: border .25s;}
+
+
 
 .a {
   font-weight: 700;
@@ -34,7 +45,7 @@ abbr[title$=onfer] {
 .n1>a:visited,
 h1.header {
   margin-bottom: .8em;
-  color: #0dcaf0;
+  color: var(--cyan);
   font-weight: 700;
 }
 
@@ -42,7 +53,7 @@ h1.header {
   font-size: 1.75rem !important;
   display: inline-block;
   text-transform: capitalize;
-  color: #0dcaf0
+  color: var(--cyan)
 }
 
 .otras {

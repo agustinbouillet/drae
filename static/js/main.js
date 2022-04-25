@@ -2,9 +2,10 @@
 
 
 function send(term){
+
   var data_list = {'term':'cielo'};
 
-  fetch(`http://127.0.0.1:5000/rae/${encodeURI(term)}`, {
+  fetch(`/rae/${encodeURI(term)}`, {
       method: "get",
       credentials: "same-origin",
       headers: {
@@ -18,12 +19,18 @@ function send(term){
   }).then(function(data) {
     var print = document.querySelector('#resultado');
     print.innerHTML = data.data;
-
+      window.location.hash = encodeURIComponent(term);
+      document.querySelector("#term").value = term;
   }).catch(function(ex) {
 
     console.log("parsing failed", ex);
 
   });
+}
+
+
+function local_storage_add(term){
+
 }
 
 
@@ -38,4 +45,28 @@ termino.forEach(function(element){
       send(term.value);
     });
 });
+
+
+
+document.addEventListener('click', e => {
+    if(e.target.matches("mark") || e.target.matches("a")){ 
+      e.preventDefault();
+      let word = e.target.textContent.replace(/[^a-záéíóúñü\s]/gmi, '');
+      send(word);
+    }
+});
+
+
+var hash_term = function(){
+  let hash = decodeURIComponent(window.location.hash).replace("#", '');
+  if(hash){
+    send(hash);
+  }
+};
+
+document.addEventListener('DOMContentLoaded', hash_term, false);
+window.addEventListener('hashchange', hash_term, false);
+
+
+
 

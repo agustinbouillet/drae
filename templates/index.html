@@ -56,17 +56,18 @@
     </div>
     <footer class="p-4">
       <h1 class="small text-center text-secondary mt-4">
-      <img style="opacity:.75; width:200px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXtkv3d3Z2treRvmFUVckOJ_vLXRspapvliA&usqp=CAU" alt="Real Academia Española"></h1>
+      <img style="opacity:.75; width:200px" src="/static/img/logo.png" alt="Real Academia Española"></h1>
     </footer>
-    <script
-    src="/static/js/main.js">
-    </script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/vendors/slug/slug.js"></script>
     <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
     crossorigin="anonymous">
     </script>
     <script>
+    var slug = require('slug');
+    print(slug('i love unicode'));
     </script>
   </body>
 </html>

@@ -11,6 +11,17 @@ from bs4 import BeautifulSoup
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_FILENAME = 'rae.db'
 
+class bcolors:
+  HEADER = '\033[95m'
+  OKBLUE = '\033[94m'
+  OKCYAN = '\033[96m'
+  OKGREEN = '\033[92m'
+  WARNING = '\033[93m'
+  FAIL = '\033[91m'
+  ENDC = '\033[0m'
+  BOLD = '\033[1m'
+  UNDERLINE = '\033[4m'
+
 
 def select(term=None):
   try:
@@ -74,16 +85,18 @@ def search(term, format='text'):
 
 
       if get_result:
-        print('¡Nuevo término!\n')
-        insert(term, str(get_result), get_result.text)
+        print(f'{bcolors.OKGREEN}[¡Nuevo término! {term}]{bcolors.ENDC}')
+        insert(term, str(get_result), get_result.text.strip())
 
       if format=='html':
         return str(get_result)
       else:
-        return get_result.text
+        return get_result.text.strip()
 
   except Exception as e:
-    return 'Sin resultados'
+    with open("noresults.txt", 'a') as f:
+      f.write(f'{term}\n')
+    return print(f'{bcolors.WARNING}[Sin resultados para {term}]{bcolors.ENDC}')
 
 
 
